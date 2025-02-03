@@ -1,43 +1,46 @@
 import React, { useState } from 'react';
-import useAuth from '../hooks/useAuth';
+import { registerUser } from '../services/authService';  // Імпортуємо функцію для реєстрації
 import styles from '../styles/Page.module.css';
 
 const RegisterPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const { register, loading, error } = useAuth();
+  const [email, setEmail] = useState('');  // Стейт для збереження email
+  const [password, setPassword] = useState('');  // Стейт для збереження пароля
+  const [error, setError] = useState(null);  // Стейт для збереження помилок
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    register(email, password); // Викликаємо функцію register з хука
+  const handleRegister = async (e) => {
+    e.preventDefault();  // Запобігаємо перезавантаженню сторінки
+    try {
+      await registerUser(email, password);  // Викликаємо функцію для реєстрації
+      window.location.href = '/login';  // Перенаправляємо на сторінку логіну після успішної реєстрації
+    } catch (error) {
+      setError(error.message);  // Виводимо помилку, якщо вона виникла
+    }
   };
 
   return (
     <div className={styles.page}>
       <h1>Register Page</h1>
-      {error && <p className={styles.error}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div className={styles.inputContainer}>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-            className={styles.input}
+      <form onSubmit={handleRegister}>
+        <div>
+          <label>Email</label>
+          <input 
+            type="email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            required 
           />
         </div>
-        <div className={styles.inputContainer}>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            className={styles.input}
+        <div>
+          <label>Password</label>
+          <input 
+            type="password" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            required 
           />
         </div>
-        <button type="submit" className={styles.button} disabled={loading}>
-          {loading ? 'Registering...' : 'Register'}
-        </button>
+        {error && <p style={{ color: 'red' }}>{error}</p>}  {/* Показуємо помилки, якщо вони є */}
+        <button type="submit" className={styles.button}>Register</button>
       </form>
     </div>
   );
