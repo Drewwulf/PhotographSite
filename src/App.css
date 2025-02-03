@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+/* Наприклад, для основного контейнера */
+.main-content {
+  margin-top: 80px; /* Це має бути висота вашого Navbar */
+}

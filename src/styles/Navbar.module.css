@@ -42,3 +42,18 @@
 .navLinks a:hover {
   color: #F4A460; /* пісочний */
 }
+.logoutButton {
+  background-color: transparent;
+  border: none;
+  color: #808000; /* оливковий */
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.logoutButton:hover {
+  color: #F4A460; /* пісочний */
+  background-color: #F5F5DC; /* бежевий фон на hover */
+  
+}
