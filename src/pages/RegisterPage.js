@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import useAuth from '../hooks/useAuth';
 import styles from '../styles/Page.module.css';
 
-const LoginPage = () => {
+const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login, loading, error } = useAuth();
+  const { register, loading, error } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login(email, password); // Викликаємо функцію login з хука
+    register(email, password); // Викликаємо функцію register з хука
   };
 
   return (
     <div className={styles.page}>
-      <h1>Login Page</h1>
+      <h1>Register Page</h1>
       {error && <p className={styles.error}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className={styles.inputContainer}>
@@ -36,11 +36,11 @@ const LoginPage = () => {
           />
         </div>
         <button type="submit" className={styles.button} disabled={loading}>
-          {loading ? 'Logging in...' : 'Login'}
+          {loading ? 'Registering...' : 'Register'}
         </button>
       </form>
     </div>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
