@@ -1,0 +1,34 @@
+/* Основний контейнер для галереї */
+.galleryContainer {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Заголовок галереї */
+.galleryTitle {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Сітка для фотографій */
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* адаптивна сітка */
+  gap: 20px;
+  justify-items: center;
+  margin-top: 30px;
+}
+
+/* Стиль для кожної фотографії */
+.galleryImage {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Ефект при наведенні на зображення */
+.galleryImage:hover {
+  transform: scale(1.05);
+}
