@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { loginUser } from '../services/authService'; // Імпортуємо функцію для логіну
 import styles from '../styles/Page.module.css';
 
-const LoginPage = () => {
+const LoginPage = ({ onLogin }) => {  // Приймаємо onLogin через пропси
   const [email, setEmail] = useState('');  // Стейт для збереження email
   const [password, setPassword] = useState('');  // Стейт для збереження пароля
   const [error, setError] = useState(null);  // Стейт для збереження помилок
@@ -10,9 +9,7 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();  // Запобігаємо перезавантаженню сторінки
     try {
-      await loginUser(email, password);  // Викликаємо функцію для логіну
-      // Перенаправляємо користувача, якщо авторизація успішна
-      window.location.href = '/profile';  // або використовуйте useNavigate, якщо використовується React Router
+      await onLogin(email, password);  // Викликаємо функцію логіну з пропсів
     } catch (error) {
       setError(error.message);  // Виводимо помилку
     }
