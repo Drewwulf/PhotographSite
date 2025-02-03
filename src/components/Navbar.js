@@ -20,6 +20,7 @@ const Navbar = () => {
         <li><NavLink to="/gallery" className={({ isActive }) => isActive ? styles.activeLink : styles.navLink}>Gallery</NavLink></li>
         <li><NavLink to="/profile" className={({ isActive }) => isActive ? styles.activeLink : styles.navLink}>Profile</NavLink></li>
         <li><NavLink to="/login" className={({ isActive }) => isActive ? styles.activeLink : styles.navLink}>Login</NavLink></li>
+        <li><NavLink to="/register" className={({ isActive }) => isActive ? styles.activeLink : styles.navLink}>Register</NavLink></li>
       </ul>
     </motion.nav>
   );
