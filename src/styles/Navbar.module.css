@@ -1,0 +1,44 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 40px;
+  background-color: #F5F5DC; /* бежевий */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.navbar .logo h2 {
+  font-size: 28px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  color: #808000; /* оливковий */
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  margin: 0; /* прибираємо зайві відступи */
+  padding: 0; /* прибираємо зайві відступи */
+}
+
+.navLinks li {
+  margin: 0 15px;
+}
+
+.navLinks a {
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  color: #808000; /* оливковий */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navLinks a:hover {
+  color: #F4A460; /* пісочний */
+}
