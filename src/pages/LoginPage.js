@@ -1,43 +1,47 @@
 import React, { useState } from 'react';
-import useAuth from '../hooks/useAuth';
+import { loginUser } from '../services/authService'; // Імпортуємо функцію для логіну
 import styles from '../styles/Page.module.css';
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const { login, loading, error } = useAuth();
+  const [email, setEmail] = useState('');  // Стейт для збереження email
+  const [password, setPassword] = useState('');  // Стейт для збереження пароля
+  const [error, setError] = useState(null);  // Стейт для збереження помилок
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    login(email, password); // Викликаємо функцію login з хука
+  const handleLogin = async (e) => {
+    e.preventDefault();  // Запобігаємо перезавантаженню сторінки
+    try {
+      await loginUser(email, password);  // Викликаємо функцію для логіну
+      // Перенаправляємо користувача, якщо авторизація успішна
+      window.location.href = '/profile';  // або використовуйте useNavigate, якщо використовується React Router
+    } catch (error) {
+      setError(error.message);  // Виводимо помилку
+    }
   };
 
   return (
     <div className={styles.page}>
       <h1>Login Page</h1>
-      {error && <p className={styles.error}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div className={styles.inputContainer}>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-            className={styles.input}
+      <form onSubmit={handleLogin}>
+        <div>
+          <label>Email</label>
+          <input 
+            type="email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            required 
           />
         </div>
-        <div className={styles.inputContainer}>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            className={styles.input}
+        <div>
+          <label>Password</label>
+          <input 
+            type="password" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            required 
           />
         </div>
-        <button type="submit" className={styles.button} disabled={loading}>
-          {loading ? 'Logging in...' : 'Login'}
-        </button>
+        {error && <p style={{ color: 'red' }}>{error}</p>}  {/* Показуємо помилки, якщо вони є */}
+        <button type="submit" className={styles.button}>Login</button>
       </form>
     </div>
   );
