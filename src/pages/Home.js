@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import styles from '../styles/Home.module.css';
 
 const Home = () => {
@@ -109,28 +108,28 @@ const Home = () => {
         </motion.h2>
         <div className={styles.imageGrid}>
           <motion.img 
-            src="https://source.unsplash.com/300x200/?photography"
+            src="https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-fall-nature-scenery-free-image.jpeg?w=600&quality=80"
             alt="Gallery 1"
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             transition={{ duration: 1, delay: 2.2 }}
           />
           <motion.img 
-            src="https://source.unsplash.com/300x200/?nature"
+            src="https://thephotoacademy.com/storage/magazine/448/3-the-photo-academy-portrait-Yousuf-Karsh.jpeg"
             alt="Gallery 2"
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             transition={{ duration: 1, delay: 2.4 }}
           />
           <motion.img 
-            src="https://source.unsplash.com/300x200/?city"
+            src="https://t4.ftcdn.net/jpg/03/21/49/17/360_F_321491746_tJimdq0ZS7F6wGKpaGOeL7EQjcdlaeqK.jpg"
             alt="Gallery 3"
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             transition={{ duration: 1, delay: 2.6 }}
           />
           <motion.img 
-            src="https://source.unsplash.com/300x200/?portrait"
+            src="https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg"
             alt="Gallery 4"
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
@@ -152,7 +151,7 @@ const Home = () => {
         <p className={styles.contactInfo}>You can reach me via email at <strong>photographer@email.com</strong>.</p>
       </section>
 
-      <Footer />
+  
     </div>
   );
 };
